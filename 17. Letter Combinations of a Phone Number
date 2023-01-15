@@ -1,0 +1,21 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        dict1 = {2 : ["a", "b", "c"], 3 : ["d", "e", "f"], 4 : ["g", "h", "i"], 5 : ["j", "k", "l"], 6 : ["m", "n", "o"], 7 : ["p", "q", "r", "s"], 8 : ["t", "u", "v"], 9 : ["w", "x", "y", "z"]}
+        digits = list(digits)
+        if len(digits) == 0:
+            return []
+        elif len(digits) == 1:
+            return dict1[int(digits[0])]
+        else:
+            a = []
+            for i in digits:
+                a.append(dict1[int(i)])
+            import itertools
+            lst = list(itertools.product(*a))
+            lst1 = []
+            for i in lst:
+                mul = ""
+                for j in i:
+                    mul += j
+                lst1.append(mul)
+            return lst1
